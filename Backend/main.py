@@ -43,6 +43,13 @@ def add_libro():
     libri.append(nuovo_libro)
  
     return jsonify(nuovo_libro)
+
+@app.route("/api/libri/<id>", methods=["DELETE"])
+def delete_libro(id):
+    for libro in libri:
+        if libro["id"] == id:
+            libri.remove(libro)
+            return jsonify({"message": "Libro eliminato"})
     
 if __name__ == "__main__":
     app.run(debug=True)
