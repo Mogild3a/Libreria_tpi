@@ -27,6 +27,22 @@ genera_libri()
 @app.route("/api/libri", methods=["GET"])
 def get_libri():
     return jsonify(libri)
+
+@app.route("/api/libri", methods=["POST"])
+def add_libro():
+    data = request.json
+ 
+    nuovo_libro = {
+        "id": fake.uuid4(),
+        "titolo": data.get("titolo"),
+        "autore": data.get("autore"),
+        "anno": data.get("anno"),
+        "genere": data.get("genere")
+    }
+ 
+    libri.append(nuovo_libro)
+ 
+    return jsonify(nuovo_libro)
     
 if __name__ == "__main__":
     app.run(debug=True)
