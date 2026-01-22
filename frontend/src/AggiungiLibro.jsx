@@ -21,12 +21,12 @@ export default function AggiungiLibro({ addLibro }) {
   }
 
   return (
-    <form onSubmit={AggiungiIlLibro}>
+    <form onSubmit={AggiungiIlLibro} className="form-aggiungi">
       <input value={titolo} onChange={e => setTitolo(e.target.value)} placeholder="Titolo" required />
       <input value={autore} onChange={e => setAutore(e.target.value)} placeholder="Autore" required />
       <input value={anno} onChange={e => setAnno(e.target.value)} placeholder="Anno" type="number" required />
       <input value={genere} onChange={e => setGenere(e.target.value)} placeholder="Genere" required />
-      <button type="submit">Aggiungi</button>
+      <button type="submit" className="btn-aggiungi">Aggiungi</button>
     </form>
   );
 }

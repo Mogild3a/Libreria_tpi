@@ -63,30 +63,28 @@ function App() {
     }
   }
 
-  return (
-    <div style={{ padding: "20px", fontFamily: "Arial", backgroundColor: "#2c2c2c", minHeight: "100vh" }}>
-      <h1 style={{ color: "white" }}>Libreria</h1>
-      <input
-        type="text"
-        placeholder="Cerca"
-        value={search}
-        onChange={e => setSearch(e.target.value)}
-        style={{
-          marginBottom: "10px",
-          padding: "5px",
-          border: "1px solid white",
-          backgroundColor: "#444",
-          color: "white"
-        }}
-      />
-      <AggiungiLibro addLibro={addLibro} />
-      <div style={{ marginTop: "10px" }}>
-        <button onClick={deleteAllLibri} style={{ marginRight: "10px" }}>Elimina tutti</button>
-        <button onClick={rigeneraLibri}>Rigenera libri</button>
-      </div>
-      <ElencoLibri libri={libriFiltrati} deleteLibro={deleteLibro} />
+return (
+  <div className="container">
+    <h1>Libreria</h1>
+    
+    <input
+      className="search-input"
+      type="text"
+      placeholder="Cerca autore o genere..."
+      value={search}
+      onChange={e => setSearch(e.target.value)}
+    />
+
+    <AggiungiLibro addLibro={addLibro} />
+
+    <div className="bottoni-gestione">
+      <button className="btn-danger" onClick={deleteAllLibri}>Elimina tutti</button>
+      <button className="btn-success" onClick={rigeneraLibri}>Rigenera libri</button>
     </div>
-  );
+
+    <ElencoLibri libri={libriFiltrati} deleteLibro={deleteLibro} />
+  </div>
+);
 }
 
 export default App;
