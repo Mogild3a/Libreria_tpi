@@ -50,6 +50,12 @@ def delete_libro(id):
         if libro["id"] == id:
             libri.remove(libro)
             return jsonify({"message": "Libro eliminato"})
+
+@app.route("/api/libri", methods=["DELETE"])
+def delete_all_libri():
+    libri.clear()
+    return jsonify({"message": "Tutti i libri eliminati"})
+ 
     
 if __name__ == "__main__":
     app.run(debug=True)
