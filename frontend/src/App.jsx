@@ -6,10 +6,20 @@ import "./App.css";
 function App() {
   const [libri, setLibri] = useState([]);
   const [search, setSearch] = useState("");
+  
+  useEffect(() => {
+    async function fetchLibri() {
+      const res = await fetch("http://localhost:5000/api/libri");
+      const data = await res.json();
+      setLibri(data);
+    }
+    fetchLibri();
+  }, []);
 
   return (
     <div style={{ padding: "20px", fontFamily: "Arial" }}>
       <h1>Libreria</h1>
+
       <input
         type="text"
         placeholder="Cerca autore o genere"
@@ -19,7 +29,7 @@ function App() {
       />
       <AggiungiLibro addLibro={() => {}} />
       <button style={{ marginTop: "10px" }}>Elimina tutti</button>
-      <ElencoLibri libri={[]} deleteLibro={() => {}} />
+      <ElencoLibri libri={libri} deleteLibro={() => {}} />
     </div>
   );
 }
