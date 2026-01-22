@@ -6,6 +6,20 @@ export default function AggiungiLibro({ addLibro }) {
   const [anno, setAnno] = useState("");
   const [genere, setGenere] = useState("");
 
+  function AggiungiIlLibro(e) {
+    e.preventDefault();
+    addLibro({
+      titolo,
+      autore,
+      anno: parseInt(anno),
+      genere
+    });
+    setTitolo("");
+    setAutore("");
+    setAnno("");
+    setGenere("");
+  }
+
   return (
     <form onSubmit={AggiungiIlLibro}>
       <input value={titolo} onChange={e => setTitolo(e.target.value)} placeholder="Titolo" required />
