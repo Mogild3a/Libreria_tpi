@@ -55,6 +55,12 @@ def delete_libro(id):
 def delete_all_libri():
     libri.clear()
     return jsonify({"message": "Tutti i libri eliminati"})
+
+@app.route("/api/libri/reset", methods=["GET"])
+def reset_libri():
+    libri.clear()
+    genera_libri(20)
+    return jsonify(libri)
  
     
 if __name__ == "__main__":
